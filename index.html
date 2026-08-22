@@ -6,7 +6,7 @@
     <title>Pintamax® | Cartas de Colores & Catálogo Oficial</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Montserrat & Roboto (As per Pintamax Brand Manual) -->
+    <!-- Google Fonts: Montserrat & Roboto (Manual de Marca Pintamax) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -44,7 +44,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 7px; height: 7px; }
         ::-webkit-scrollbar-track { background: #e2e8f0; }
         ::-webkit-scrollbar-thumb { background: #1E98D7; border-radius: 4px; }
@@ -60,12 +59,12 @@
                 <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-extrabold bg-pintamax-cyan text-white uppercase tracking-wider">
                     OFICIAL
                 </span>
-                <span class="font-medium text-slate-100 hidden sm:inline">Centro de Color Pintamax® • ¡Pinta con Confianza!</span>
+                <span class="font-medium text-slate-100 hidden sm:inline">Centro Digital de Color Pintamax® • ¡Pinta con Confianza!</span>
             </div>
             <div class="flex items-center gap-4 text-xs font-semibold text-sky-200">
-                <a href="#cartas-pdf" onclick="switchTab('pdf')" class="hover:text-white transition">Cartas PDF</a>
+                <button onclick="showMainView('pdf')" class="hover:text-white transition">Cartas Digitales</button>
                 <span>•</span>
-                <a href="#muro-colores" onclick="switchTab('muro')" class="hover:text-white transition">Muro de Colores</a>
+                <button onclick="showMainView('muro')" class="hover:text-white transition">Muro de Colores</button>
             </div>
         </div>
     </div>
@@ -77,12 +76,12 @@
                 
                 <!-- Main Logo -->
                 <div class="flex items-center">
-                    <a href="#" class="flex items-center">
+                    <button onclick="showMainView('pdf')" class="flex items-center">
                         <img src="logo actual-01.jpg" 
                              alt="Pintamax® ¡Pinta con Confianza!" 
                              class="h-12 sm:h-16 w-auto object-contain transition-transform duration-200 hover:scale-105"
                              onerror="this.onerror=null; this.src='https://placehold.co/280x90/084375/ffffff?text=Pintamax%C2%AE';">
-                    </a>
+                    </button>
                 </div>
 
                 <!-- Global Search Bar -->
@@ -122,7 +121,7 @@
     </header>
 
     <!-- MAIN HERO BANNER: COLOR APLICADO EN ESPACIOS -->
-    <section class="py-8 bg-slate-100 border-b border-slate-200">
+    <section id="heroSection" class="py-8 bg-slate-100 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div id="heroBannerCard" class="rounded-3xl overflow-hidden shadow-xl transition-colors duration-500 text-white p-6 md:p-10" style="background-color: #ea580c;">
@@ -138,7 +137,7 @@
                                  class="w-full h-full object-cover transition-all duration-500"
                                  onerror="this.onerror=null; this.src='https://placehold.co/800x600/084375/ffffff?text=Espacio+Pintamax%C2%AE';">
 
-                            <!-- SW Badge Overlay -->
+                            <!-- Badge Overlay -->
                             <div class="absolute bottom-4 left-4 bg-white/95 text-slate-900 px-3.5 py-1.5 rounded-lg shadow-md border border-slate-200 text-[11px] font-extrabold uppercase tracking-wider">
                                 Pintamax® <span id="heroBadgeText">Color de Espacio</span>
                             </div>
@@ -179,10 +178,10 @@
                                     <span class="block text-[10px] text-white/70 font-semibold">Código Oficial</span>
                                     <span id="heroCodeText" class="font-mono font-bold text-sm">P 145-4</span>
                                 </div>
-                                <div class="bg-black/20 p-2.5 rounded-xl backdrop-blur-sm">
-                                    <span class="block text-[10px] text-white/70 font-semibold">Carta PDF</span>
-                                    <span id="heroCardName" class="font-bold truncate block">Terracotas.pdf</span>
-                                </div>
+                                <button id="heroGoSubpageBtn" onclick="openCardSubpage(0)" class="w-full py-2 px-3 bg-white text-slate-900 font-extrabold text-xs rounded-xl shadow hover:bg-slate-100 transition flex items-center justify-between">
+                                    <span>Ver Subpágina</span>
+                                    <svg class="w-4 h-4 text-pintamax-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </button>
                             </div>
                         </div>
 
@@ -204,69 +203,165 @@
         </div>
     </section>
 
-    <!-- MAIN CONTENT & TAB SYSTEM -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full space-y-8">
 
-        <!-- TAB BUTTONS -->
-        <div class="flex flex-col sm:flex-row items-center justify-between border-b-2 border-slate-200 pb-4 gap-4">
-            <div>
-                <div class="flex items-center gap-2">
-                    <h3 id="currentTabTitle" class="text-2xl font-extrabold text-pintamax-blue tracking-tight">Cartas de Colores Oficiales (PDF)</h3>
-                    <span id="pdfTotalBadge" class="bg-pintamax-cyan/10 text-pintamax-cyan border border-pintamax-cyan/20 text-xs font-extrabold px-2.5 py-0.5 rounded-full">8 Documentos</span>
+        <!-- VIEW 1: CATALOG MAIN PAGE -->
+        <div id="catalogMainView" class="space-y-8">
+            <!-- TAB BUTTONS -->
+            <div class="flex flex-col sm:flex-row items-center justify-between border-b-2 border-slate-200 pb-4 gap-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h3 id="currentTabTitle" class="text-2xl font-extrabold text-pintamax-blue tracking-tight">Cartas Digitales de Color</h3>
+                        <span id="pdfTotalBadge" class="bg-pintamax-cyan/10 text-pintamax-cyan border border-pintamax-cyan/20 text-xs font-extrabold px-2.5 py-0.5 rounded-full">8 Subpáginas</span>
+                    </div>
+                    <p id="currentTabSubtitle" class="text-xs text-slate-500 font-medium font-body mt-0.5">Explora interactivamente cada subpágina de color de Pintamax®</p>
                 </div>
-                <p id="currentTabSubtitle" class="text-xs text-slate-500 font-medium font-body mt-0.5">Descarga las 8 cartas de colores oficiales con los códigos de fábrica de Pintamax®</p>
+
+                <div class="inline-flex p-1 bg-slate-200/80 rounded-2xl gap-1">
+                    <button id="btnTabPdf" onclick="switchTab('pdf')" 
+                            class="px-5 py-2.5 rounded-xl bg-pintamax-blue text-white font-bold text-xs shadow transition-all flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        Cartas Digitales (8)
+                    </button>
+                    <button id="btnTabMuro" onclick="switchTab('muro')" 
+                            class="px-5 py-2.5 rounded-xl text-slate-700 hover:text-pintamax-blue font-bold text-xs transition-all flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                        Muro de Colores
+                    </button>
+                </div>
             </div>
 
-            <div class="inline-flex p-1 bg-slate-200/80 rounded-2xl gap-1">
-                <button id="btnTabPdf" onclick="switchTab('pdf')" 
-                        class="px-5 py-2.5 rounded-xl bg-pintamax-blue text-white font-bold text-xs shadow transition-all flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                    Cartas PDF (8)
-                </button>
-                <button id="btnTabMuro" onclick="switchTab('muro')" 
-                        class="px-5 py-2.5 rounded-xl text-slate-700 hover:text-pintamax-blue font-bold text-xs transition-all flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                    Muro de Colores
+            <!-- SECTION 1: CARTAS PDF / DIGITALES GRID -->
+            <section id="pdfSection" class="space-y-6">
+                <div id="pdfGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- PDF cards dynamically generated -->
+                </div>
+            </section>
+
+            <!-- SECTION 2: MURO DE COLORES -->
+            <section id="muroSection" class="hidden space-y-6">
+                <!-- Category Filter Buttons Bar -->
+                <div id="categoryFilterBar" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-2">
+                    <!-- Category buttons injected by JS -->
+                </div>
+
+                <!-- Swatches Grid -->
+                <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                    <div class="flex justify-between items-center pb-4 mb-6 border-b border-slate-100">
+                        <h4 class="text-sm font-extrabold text-pintamax-blue uppercase tracking-wider">Muestrario de Tonos Pintamax®</h4>
+                        <span class="text-xs text-slate-400 font-bold">Mostrando <span id="muroCount" class="text-pintamax-cyan">0</span> tonos</span>
+                    </div>
+                    <div id="muroGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <!-- Swatches injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- EMPTY SEARCH STATE -->
+            <div id="emptyState" class="hidden text-center py-16 bg-white border border-slate-200 rounded-3xl shadow-sm">
+                <div class="w-12 h-12 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <h4 class="text-base font-bold text-slate-800">No se encontraron tonos coincidentes</h4>
+                <p class="text-xs text-slate-500 font-body max-w-sm mx-auto mt-1">Prueba buscando con otra palabra clave como "Azul", "Gris", "Terracota" o "P 145".</p>
+                <button onclick="resetSearch()" class="mt-4 px-4 py-2 bg-pintamax-blue text-white text-xs font-bold rounded-xl shadow hover:bg-pintamax-dark transition">
+                    Restablecer Búsqueda
                 </button>
             </div>
         </div>
 
-        <!-- SECTION 1: CARTAS PDF GRID -->
-        <section id="pdfSection" class="space-y-6">
-            <div id="pdfGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- PDF cards dynamically generated -->
-            </div>
-        </section>
+        <!-- VIEW 2: DEDICATED CARD SUBPAGE -->
+        <div id="cardSubpageView" class="hidden space-y-8">
+            
+            <!-- Breadcrumbs Nav -->
+            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                <nav class="flex items-center gap-2 text-xs font-bold text-slate-500">
+                    <button onclick="showMainView('pdf')" class="hover:text-pintamax-blue transition flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        Inicio
+                    </button>
+                    <span>/</span>
+                    <button onclick="showMainView('pdf')" class="hover:text-pintamax-blue transition">Cartas de Colores</button>
+                    <span>/</span>
+                    <span id="subpageBreadcrumbTitle" class="text-pintamax-blue font-extrabold">Terracotas y Arcillas</span>
+                </nav>
 
-        <!-- SECTION 2: MURO DE COLORES -->
-        <section id="muroSection" class="hidden space-y-6">
-            <!-- Category Filter Buttons Bar -->
-            <div id="categoryFilterBar" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-2">
-                <!-- Category buttons injected by JS -->
+                <button onclick="showMainView('pdf')" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs transition">
+                    ← Volver al Catálogo
+                </button>
             </div>
 
-            <!-- Swatches Grid -->
-            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
-                <div class="flex justify-between items-center pb-4 mb-6 border-b border-slate-100">
-                    <h4 class="text-sm font-extrabold text-pintamax-blue uppercase tracking-wider">Muestrario de Tonos Pintamax®</h4>
-                    <span class="text-xs text-slate-400 font-bold">Mostrando <span id="muroCount" class="text-pintamax-cyan">0</span> tonos</span>
+            <!-- Subpage Header Banner -->
+            <div id="subpageHeaderBanner" class="p-8 rounded-3xl text-white shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6" style="background-color: #ea580c;">
+                <div class="space-y-2 max-w-2xl">
+                    <span id="subpageBadge" class="text-[11px] font-extrabold uppercase tracking-widest bg-black/20 px-3 py-1 rounded-full text-white backdrop-blur-sm">
+                        Carta Oficial Digital
+                    </span>
+                    <h2 id="subpageTitle" class="text-3xl md:text-5xl font-black">Terracotas y Arcillas</h2>
+                    <p id="subpageDesc" class="text-xs md:text-sm text-white/90 font-body">Colección completa de matices cálidos con tecnología de recubrimiento Pintamax®.</p>
                 </div>
-                <div id="muroGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                    <!-- Swatches injected by JS -->
+                
+                <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+                    <a id="subpageDirectPdfBtn" href="terracotas.pdf" download="terracotas.pdf" class="w-full sm:w-auto px-5 py-3 bg-white text-slate-900 hover:bg-slate-100 font-extrabold text-xs rounded-xl shadow transition text-center flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4 text-pintamax-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Descargar PDF
+                    </a>
                 </div>
             </div>
-        </section>
 
-        <!-- EMPTY SEARCH STATE -->
-        <div id="emptyState" class="hidden text-center py-16 bg-white border border-slate-200 rounded-3xl shadow-sm">
-            <div class="w-12 h-12 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <!-- Interactive Subpage Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- LEFT COLUMN: PDF Embedded Viewer & Information -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <h4 class="text-sm font-extrabold text-pintamax-blue uppercase tracking-wider flex items-center gap-2">
+                                <svg class="w-4 h-4 text-pintamax-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                Documento Oficial Integrado
+                            </h4>
+                            <span id="subpageFileLabel" class="text-xs font-mono font-bold text-slate-400">terracotas.pdf</span>
+                        </div>
+
+                        <!-- Embedded PDF View Frame with Fallback -->
+                        <div class="relative aspect-[3/4] sm:aspect-[4/3] md:aspect-[16/10] rounded-2xl overflow-hidden border border-slate-200 bg-slate-900 shadow-inner">
+                            <iframe id="subpageIframe" 
+                                    src="terracotas.pdf" 
+                                    class="w-full h-full border-0">
+                            </iframe>
+                        </div>
+
+                        <p class="text-[11px] text-slate-500 font-body text-center">
+                            ¿Tu navegador no despliega el archivo embebido? Utiliza el botón de descarga en la esquina superior.
+                        </p>
+                    </div>
+
+                    <!-- Room Image Feature Card -->
+                    <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+                        <h4 class="text-sm font-extrabold text-pintamax-blue uppercase tracking-wider">Espacio Inspiración de esta Gama</h4>
+                        <div class="aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100">
+                            <img id="subpageRoomImg" src="Gemini_Generated_Image_7pnldn7pnldn7pnl.jfif" alt="Espacio de inspiración" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Digital Swatch Grid for this Card -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <h4 class="text-sm font-extrabold text-pintamax-blue uppercase tracking-wider">Muestras de Color en esta Carta</h4>
+                            <span id="subpageSwatchCount" class="text-xs font-bold bg-sky-50 text-pintamax-cyan px-2.5 py-1 rounded-full">9 Tonos</span>
+                        </div>
+
+                        <!-- Grid list of swatches -->
+                        <div id="subpageSwatchesList" class="grid grid-cols-2 gap-3 max-h-[680px] overflow-y-auto pr-1">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <h4 class="text-base font-bold text-slate-800">No se encontraron tonos coincidentes</h4>
-            <p class="text-xs text-slate-500 font-body max-w-sm mx-auto mt-1">Prueba buscando con otra palabra clave como "Azul", "Gris", "Terracota" o "P 145".</p>
-            <button onclick="resetSearch()" class="mt-4 px-4 py-2 bg-pintamax-blue text-white text-xs font-bold rounded-xl shadow hover:bg-pintamax-dark transition">
-                Restablecer Búsqueda
-            </button>
+
         </div>
 
     </main>
@@ -343,7 +438,7 @@
                 </div>
 
                 <div class="pt-2 flex gap-3">
-                    <a id="modalPdfBtn" href="#" download class="w-full py-3 bg-pintamax-blue hover:bg-pintamax-dark text-white font-extrabold text-xs rounded-xl shadow transition text-center flex items-center justify-center gap-2 font-sans">
+                    <a id="modalPdfBtn" href="terracotas.pdf" download="terracotas.pdf" class="w-full py-3 bg-pintamax-blue hover:bg-pintamax-dark text-white font-extrabold text-xs rounded-xl shadow transition text-center flex items-center justify-center gap-2 font-sans">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         Descargar Carta PDF Oficial
                     </a>
@@ -400,14 +495,13 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         /**
-         * FULL CATALOG DATA
-         * Mapped with real room inspiration images for each color family.
+         * CATALOG DATA WITH STANDARDIZED LOWERCASE FILENAMES
          */
         const catalogData = [
             {
                 id: "terracotas",
                 title: "Terracotas y Arcillas",
-                fileUrl: "pdfs/Terracotas.pdf",
+                fileUrl: "terracotas.pdf",
                 accentHex: "#ea580c",
                 roomImage: "Gemini_Generated_Image_7pnldn7pnldn7pnl.jfif",
                 featuredColor: { code: "P 145-4", name: "Aztec", hex: "#ea580c", desc: "Un tono terroso cálido y acogedor de la carta Terracotas que aporta elegancia artesanal y armonía natural en salas y salones." },
@@ -426,7 +520,7 @@
             {
                 id: "amarillos",
                 title: "Amarillos, Ocres y Cremas",
-                fileUrl: "pdfs/amarillos ocres cremas.pdf",
+                fileUrl: "amarillos.pdf",
                 accentHex: "#d97706",
                 roomImage: "Gemini_Generated_Image_u8bd11u8bd11u8bd.jfif",
                 featuredColor: { code: "P 152-2", name: "Classic Silk", hex: "#fef3c7", desc: "Tono cremoso luminoso de la carta Amarillos & Ocres, ideal para brindar amplitud y luz natural a estancias familiares." },
@@ -445,7 +539,7 @@
             {
                 id: "grises",
                 title: "Grises y Chocolates",
-                fileUrl: "pdfs/CHOCOLATES GRISACEAOS.pdf",
+                fileUrl: "grises.pdf",
                 accentHex: "#475569",
                 roomImage: "Gemini_Generated_Image_omibf2omibf2omib.jfif",
                 featuredColor: { code: "P 54-4", name: "Stormy Sky", hex: "#64748b", desc: "Elegancia neutra de la carta Grises & Chocolates. Aporta sobriedad contemporánea en oficinas, fachadas y salas de estar." },
@@ -463,7 +557,7 @@
             {
                 id: "lilas",
                 title: "Lilas y Violetas",
-                fileUrl: "pdfs/LILAS.pdf",
+                fileUrl: "lilas.pdf",
                 accentHex: "#9333ea",
                 roomImage: "Gemini_Generated_Image_phg4ogphg4ogphg4.jfif",
                 featuredColor: { code: "M-6822", name: "Wisteria", hex: "#d8b4fe", desc: "Sutileza mística y serenidad de la carta Lilas. Crea ambientes relajantes en dormitorios y salones creativos." },
@@ -481,7 +575,7 @@
             {
                 id: "verdes-azulados",
                 title: "Verdes Azulados y Turquesas",
-                fileUrl: "pdfs/VERDES AZULADOS.pdf",
+                fileUrl: "verdes-azulados.pdf",
                 accentHex: "#0d9488",
                 roomImage: "Gemini_Generated_Image_wxikhowxikhowxik.jfif",
                 featuredColor: { code: "M-6473", name: "Surf Green", hex: "#2dd4bf", desc: "Frescura marina y tono vibrante de la carta Verdes Azulados. Evoca serenidad y equilibrio en espacios modernos." },
@@ -499,7 +593,7 @@
             {
                 id: "verdes",
                 title: "Verdes Botánicos y Olivas",
-                fileUrl: "pdfs/VERDES.pdf",
+                fileUrl: "verdes.pdf",
                 accentHex: "#16a34a",
                 roomImage: "Gemini_Generated_Image_wxikhowxikhowxik.jfif",
                 featuredColor: { code: "M-6426", name: "Basque Green", hex: "#4ade80", desc: "Tono natural orgánico de la carta Verdes. Conecta con la vegetación e inspira frescura en paredes de acento." },
@@ -517,7 +611,7 @@
             {
                 id: "rosas",
                 title: "Rosas y Pasteles",
-                fileUrl: "pdfs/rosas.pdf",
+                fileUrl: "rosas.pdf",
                 accentHex: "#db2777",
                 roomImage: "Gemini_Generated_Image_ebcx3cebcx3cebcx.jfif",
                 featuredColor: { code: "P 93-1", name: "Rose Blush", hex: "#f472b6", desc: "Calidez romántica de la carta Rosas. Un tono delicado y dulce para dormitorios y zonas de descanso del hogar." },
@@ -534,7 +628,7 @@
             {
                 id: "celestes",
                 title: "Celestes y Azules",
-                fileUrl: "pdfs/celestes.pdf",
+                fileUrl: "celestes.pdf",
                 accentHex: "#0284c7",
                 roomImage: "Gemini_Generated_Image_w23yb2w23yb2w23y.jfif",
                 featuredColor: { code: "P 72-4", name: "Aegean Sea", hex: "#7dd3fc", desc: "Tranquilidad profunda de la carta Celestes. Favorece la concentración y calma en estudios y salas principales." },
@@ -554,6 +648,7 @@
         let currentSearchQuery = "";
         let selectedCategory = "todos";
         let activeTab = "pdf"; // 'pdf' or 'muro'
+        let currentCardIndex = 0;
         let savedSwatches = JSON.parse(localStorage.getItem('pintamax_saved_v2') || '[]');
 
         function renderHeroBannerSwatches() {
@@ -568,12 +663,12 @@
         }
 
         function setHeroFeaturedColor(index) {
+            currentCardIndex = index;
             const item = catalogData[index];
             const feat = item.featuredColor;
 
             document.getElementById('heroBannerCard').style.backgroundColor = item.accentHex;
             
-            // Update Main & Secondary room image
             const mainImg = document.getElementById('heroMainRoomImg');
             const secImg = document.getElementById('heroSecondaryRoomImg');
             
@@ -585,12 +680,16 @@
             document.getElementById('heroColorSubtitle').textContent = feat.desc;
             document.getElementById('heroCodeText').textContent = feat.code;
             document.getElementById('heroSecondaryCode').textContent = feat.code;
-            document.getElementById('heroCardName').textContent = item.fileUrl.replace('pdfs/', '');
+            
+            const subpageBtn = document.getElementById('heroGoSubpageBtn');
+            subpageBtn.onclick = () => openCardSubpage(index);
         }
 
         function renderPdfGrid(filteredData) {
             const grid = document.getElementById('pdfGrid');
-            grid.innerHTML = filteredData.map(item => `
+            grid.innerHTML = filteredData.map(item => {
+                const originalIndex = catalogData.findIndex(c => c.id === item.id);
+                return `
                 <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group">
                     <div>
                         <!-- Swatches preview strip -->
@@ -603,10 +702,10 @@
 
                         <div class="flex items-center justify-between gap-2 mb-1">
                             <span class="text-[10px] font-extrabold uppercase tracking-wider text-pintamax-cyan bg-sky-50 px-2.5 py-1 rounded-md">
-                                Carta Oficial PDF
+                                Carta Digital Subpágina
                             </span>
                             <span class="text-[10px] font-mono text-slate-400 truncate max-w-[120px]" title="${item.fileUrl}">
-                                📄 ${item.fileUrl.replace('pdfs/', '')}
+                                📄 ${item.fileUrl}
                             </span>
                         </div>
 
@@ -614,19 +713,80 @@
                             ${item.title}
                         </h4>
                         <p class="text-xs text-slate-500 font-body leading-relaxed mb-6">
-                            Contiene la gama cromática completa de fábrica para la línea ${item.title}.
+                            Subpágina dedicada con visualizador interactivo y gama cromática oficial de Pintamax®.
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-center">
-                        <a href="${encodeURI(item.fileUrl)}" download="${item.fileUrl.split('/').pop()}" 
-                           class="w-full py-3 px-4 bg-pintamax-blue hover:bg-pintamax-dark text-white text-xs font-extrabold rounded-xl shadow transition text-center flex items-center justify-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            Descargar PDF
-                        </a>
+                    <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
+                        <button onclick="openCardSubpage(${originalIndex})" 
+                                class="w-full py-3 px-4 bg-pintamax-blue hover:bg-pintamax-dark text-white text-xs font-extrabold rounded-xl shadow transition text-center flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4 text-pintamax-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            Abrir Subpágina Digital
+                        </button>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
+        }
+
+        function openCardSubpage(index) {
+            const item = catalogData[index];
+            if (!item) return;
+
+            document.getElementById('catalogMainView').classList.add('hidden');
+            document.getElementById('heroSection').classList.add('hidden');
+            document.getElementById('cardSubpageView').classList.remove('hidden');
+
+            document.getElementById('subpageBreadcrumbTitle').textContent = item.title;
+            document.getElementById('subpageTitle').textContent = item.title;
+            document.getElementById('subpageHeaderBanner').style.backgroundColor = item.accentHex;
+            document.getElementById('subpageFileLabel').textContent = item.fileUrl;
+            
+            // Set up Embedded Iframe View
+            const iframe = document.getElementById('subpageIframe');
+            iframe.src = `./${item.fileUrl}`;
+
+            // Set up direct download button
+            const directBtn = document.getElementById('subpageDirectPdfBtn');
+            directBtn.href = `./${item.fileUrl}`;
+            directBtn.setAttribute('download', item.fileUrl);
+
+            // Set Room photo
+            document.getElementById('subpageRoomImg').src = item.roomImage;
+
+            // Render digital swatches list for this subpage
+            const listContainer = document.getElementById('subpageSwatchesList');
+            document.getElementById('subpageSwatchCount').textContent = `${item.swatches.length} Tonos`;
+
+            listContainer.innerHTML = item.swatches.map(sw => {
+                const fullSwatch = { ...sw, cardTitle: item.title, cardPdf: item.fileUrl };
+                const isSaved = savedSwatches.some(s => s.code === sw.code);
+                return `
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 cursor-pointer hover:shadow-md transition flex flex-col justify-between"
+                         onclick='openColorModal(${JSON.stringify(fullSwatch)})'>
+                        <div class="h-16 w-full rounded-xl relative p-1.5 flex justify-end items-start shadow-inner" style="background-color: ${sw.hex};">
+                            <button onclick='event.stopPropagation(); toggleSaveSwatch(${JSON.stringify(fullSwatch)});' 
+                                    class="p-1 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-sm transition">
+                                <svg class="w-3 h-3 ${isSaved ? 'text-pintamax-yellow fill-pintamax-yellow' : 'text-white'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="mt-2 text-left">
+                            <div class="text-[10px] font-mono font-bold text-slate-400">${sw.code}</div>
+                            <div class="text-xs font-bold text-slate-900 truncate">${sw.name}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showMainView(tab = 'pdf') {
+            document.getElementById('cardSubpageView').classList.add('hidden');
+            document.getElementById('catalogMainView').classList.remove('hidden');
+            document.getElementById('heroSection').classList.remove('hidden');
+            switchTab(tab);
         }
 
         function renderCategoryFilterBar() {
@@ -728,8 +888,8 @@
                 muroSec.classList.add('hidden');
                 btnPdf.className = "px-5 py-2.5 rounded-xl bg-pintamax-blue text-white font-bold text-xs shadow transition-all flex items-center gap-2";
                 btnMuro.className = "px-5 py-2.5 rounded-xl text-slate-700 hover:text-pintamax-blue font-bold text-xs transition-all flex items-center gap-2";
-                document.getElementById('currentTabTitle').textContent = "Cartas de Colores Oficiales (PDF)";
-                document.getElementById('currentTabSubtitle').textContent = "Descarga las 8 cartas de colores oficiales con los códigos de fábrica de Pintamax®";
+                document.getElementById('currentTabTitle').textContent = "Cartas Digitales de Color";
+                document.getElementById('currentTabSubtitle').textContent = "Explora interactivamente cada subpágina de color de Pintamax®";
             } else {
                 pdfSec.classList.add('hidden');
                 muroSec.classList.remove('hidden');
@@ -830,9 +990,9 @@
             document.getElementById('modalCardTitle').textContent = swatch.cardTitle || "Pintamax®";
             
             const pdfBtn = document.getElementById('modalPdfBtn');
-            const pdfUrl = swatch.cardPdf || "pdfs/Terracotas.pdf";
-            pdfBtn.href = encodeURI(pdfUrl);
-            pdfBtn.setAttribute('download', pdfUrl.split('/').pop());
+            const pdfUrl = swatch.cardPdf || "terracotas.pdf";
+            pdfBtn.href = `./${pdfUrl}`;
+            pdfBtn.setAttribute('download', pdfUrl);
 
             document.getElementById('colorModal').classList.remove('hidden');
         }
