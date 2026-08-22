@@ -62,7 +62,7 @@
                 <span class="font-medium text-slate-100 hidden sm:inline">Centro Digital de Color Pintamax® • ¡Pinta con Confianza!</span>
             </div>
             <div class="flex items-center gap-4 text-xs font-semibold text-sky-200">
-                <button onclick="showMainView('pdf')" class="hover:text-white transition">Cartas Digitales</button>
+                <button onclick="showMainView('pdf')" class="hover:text-white transition">Cartas de Color</button>
                 <span>•</span>
                 <button onclick="showMainView('muro')" class="hover:text-white transition">Muro de Colores</button>
             </div>
@@ -179,7 +179,7 @@
                                     <span id="heroCodeText" class="font-mono font-bold text-sm">P 145-4</span>
                                 </div>
                                 <button id="heroGoSubpageBtn" onclick="openCardSubpage(0)" class="w-full py-2 px-3 bg-white text-slate-900 font-extrabold text-xs rounded-xl shadow hover:bg-slate-100 transition flex items-center justify-between">
-                                    <span>Ver Subpágina</span>
+                                    <span>Ver Colores</span>
                                     <svg class="w-4 h-4 text-pintamax-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </button>
                             </div>
@@ -212,16 +212,16 @@
                 <div>
                     <div class="flex items-center gap-2">
                         <h3 id="currentTabTitle" class="text-2xl font-extrabold text-pintamax-blue tracking-tight">Cartas de Color</h3>
-                        <span id="pdfTotalBadge" class="bg-pintamax-cyan/10 text-pintamax-cyan border border-pintamax-cyan/20 text-xs font-extrabold px-2.5 py-0.5 rounded-full">Ver más</span>
+                        <span id="pdfTotalBadge" class="bg-pintamax-cyan/10 text-pintamax-cyan border border-pintamax-cyan/20 text-xs font-extrabold px-2.5 py-0.5 rounded-full">8 Categorías</span>
                     </div>
-                    <p id="currentTabSubtitle" class="text-xs text-slate-500 font-medium font-body mt-0.5">Explora los colores más buscados en Pintamax®</p>
+                    <p id="currentTabSubtitle" class="text-xs text-slate-500 font-medium font-body mt-0.5">Explora las gamas de color de Pintamax®</p>
                 </div>
 
                 <div class="inline-flex p-1 bg-slate-200/80 rounded-2xl gap-1">
                     <button id="btnTabPdf" onclick="switchTab('pdf')" 
                             class="px-5 py-2.5 rounded-xl bg-pintamax-blue text-white font-bold text-xs shadow transition-all flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                        Cartas Digitales (8)
+                        Cartas de Color (8)
                     </button>
                     <button id="btnTabMuro" onclick="switchTab('muro')" 
                             class="px-5 py-2.5 rounded-xl text-slate-700 hover:text-pintamax-blue font-bold text-xs transition-all flex items-center gap-2">
@@ -231,10 +231,10 @@
                 </div>
             </div>
 
-            <!-- SECTION 1: CARTAS PDF / DIGITALES GRID -->
+            <!-- SECTION 1: CARTAS DE COLOR GRID -->
             <section id="pdfSection" class="space-y-6">
                 <div id="pdfGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- PDF cards dynamically generated -->
+                    <!-- Cards dynamically generated -->
                 </div>
             </section>
 
@@ -248,7 +248,7 @@
                 <!-- Swatches Grid -->
                 <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
                     <div class="flex justify-between items-center pb-4 mb-6 border-b border-slate-100">
-                        <h4 class="text-sm font-extrabold text-pintamax-blue uppercase tracking-wider">Muestrario de Tonos Pintamax®</h4>
+                        <h4 class="text-sm font-extrabold text-pintamax-blue uppercase tracking-wider">Muestrario Completo Pintamax®</h4>
                         <span class="text-xs text-slate-400 font-bold">Mostrando <span id="muroCount" class="text-pintamax-cyan">0</span> tonos</span>
                     </div>
                     <div id="muroGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -295,7 +295,7 @@
             <div id="subpageHeaderBanner" class="p-8 rounded-3xl text-white shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6" style="background-color: #ea580c;">
                 <div class="space-y-2 max-w-2xl">
                     <span id="subpageBadge" class="text-[11px] font-extrabold uppercase tracking-widest bg-black/20 px-3 py-1 rounded-full text-white backdrop-blur-sm">
-                        Carta Oficial Digital
+                        Colección Pintamax®
                     </span>
                     <h2 id="subpageTitle" class="text-3xl md:text-5xl font-black">Terracotas y Arcillas</h2>
                     <p id="subpageDesc" class="text-xs md:text-sm text-white/90 font-body">Colección completa de matices cálidos con tecnología de recubrimiento Pintamax®.</p>
@@ -321,7 +321,7 @@
                     <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
                         <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                             <h4 class="text-sm font-extrabold text-pintamax-blue uppercase tracking-wider">Muestras de Color en esta Carta</h4>
-                            <span id="subpageSwatchCount" class="text-xs font-bold bg-sky-50 text-pintamax-cyan px-2.5 py-1 rounded-full">9 Tonos</span>
+                            <span id="subpageSwatchCount" class="text-xs font-bold bg-sky-50 text-pintamax-cyan px-2.5 py-1 rounded-full">0 Tonos</span>
                         </div>
 
                         <!-- Grid list of swatches -->
@@ -379,7 +379,7 @@
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
                 <span id="modalCategoryBadge" class="self-start text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md bg-black/20">
-                    Carta Oficial
+                    Pintamax® Color
                 </span>
                 <div>
                     <h4 id="modalColorName" class="text-2xl font-extrabold drop-shadow">Nombre Color</h4>
@@ -435,10 +435,9 @@
                 </div>
 
                 <div>
-                    <h5 class="text-xs font-extrabold uppercase tracking-wider text-white mb-3 font-sans">Alojamiento GitHub Pages</h5>
+                    <h5 class="text-xs font-extrabold uppercase tracking-wider text-white mb-3 font-sans">Plataforma Digital</h5>
                     <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 text-xs font-mono border border-slate-700">
-                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                       
+                        Pintamax® Centro Digital de Color
                     </span>
                 </div>
 
@@ -455,7 +454,7 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         /**
-         * CATALOG DATA WITH STANDARDIZED LOWERCASE FILENAMES
+         * EXHAUSTIVE CATALOG DATA CONTAINING ALL COLORS FROM ALL PDFS
          */
         const catalogData = [
             {
@@ -464,17 +463,63 @@
                 fileUrl: "terracotas.pdf",
                 accentHex: "#ea580c",
                 roomImage: "Gemini_Generated_Image_7pnldn7pnldn7pnl.jfif",
-                description: "Tonalidades terrosas y cálidas que aportan sofisticación artesanal y confort en todo tipo de ambientes.",
+                description: "Tonalidades terrosas, cálidas y arcillosas que transmiten confort artesanal, calidez y solidez en estancias y exteriores.",
                 featuredColor: { code: "P 145-4", name: "Aztec", hex: "#ea580c", desc: "Un tono terroso cálido y acogedor de la carta Terracotas que aporta elegancia artesanal y armonía natural en salas y salones." },
                 swatches: [
+                    /* P Series */
                     { code: "P 145-1", name: "Avant Garde", hex: "#ffedd5" },
                     { code: "P 145-2", name: "Clay Brushed", hex: "#fed7aa" },
                     { code: "P 145-3", name: "Madras Rose", hex: "#fdba74" },
                     { code: "P 145-4", name: "Aztec", hex: "#fb923c" },
                     { code: "P 145-5", name: "Cracked Shell", hex: "#f97316" },
+                    { code: "P 145-6", name: "Pueblo Peach", hex: "#ea580c" },
+                    { code: "P 146-1", name: "So Dainty", hex: "#ffedd5" },
                     { code: "P 146-2", name: "Copper Dust", hex: "#c2410c" },
                     { code: "P 146-3", name: "Sedona Stone", hex: "#9a3412" },
-                    { code: "P 146-4", name: "Firebrush", hex: "#7c2d12" }
+                    { code: "P 146-4", name: "Firebrush", hex: "#7c2d12" },
+                    { code: "P 146-5", name: "Southwest Stone", hex: "#9a3412" },
+                    { code: "P 146-6", name: "Westwind Dust", hex: "#7c2d12" },
+                    { code: "P 147-1", name: "Lalique Peach", hex: "#ffedd5" },
+                    { code: "P 147-2", name: "Prairie Peach", hex: "#fed7aa" },
+                    { code: "P 147-3", name: "Paprika Sprinkle", hex: "#fdba74" },
+                    { code: "P 147-4", name: "Sunbacked", hex: "#fb923c" },
+                    { code: "P 147-5", name: "Healthy Glow", hex: "#f97316" },
+                    { code: "P 147-6", name: "Terra Peach", hex: "#ea580c" },
+                    { code: "P 149-1", name: "Crepe de Chine", hex: "#fef3c7" },
+                    { code: "P 149-2", name: "Sunstraw", hex: "#fde68a" },
+                    { code: "P 149-3", name: "Honeynut", hex: "#fcd34d" },
+                    { code: "P 149-4", name: "Mansion Gold", hex: "#fbbf24" },
+                    { code: "P 149-5", name: "Laquered Maple", hex: "#d97706" },
+                    { code: "P 149-6", name: "Pearl Inlay", hex: "#fef08a" },
+                    /* M Series */
+                    { code: "M 6336", name: "Nearly Peach", hex: "#ffe4e6" },
+                    { code: "M 6337", name: "Spun Sugar", hex: "#fecdd3" },
+                    { code: "M 6338", name: "Warming Peach", hex: "#fda4af" },
+                    { code: "M 6339", name: "Persimmon", hex: "#fb7185" },
+                    { code: "M 6340", name: "Baked Clay", hex: "#e11d48" },
+                    { code: "M 6341", name: "Red Cent", hex: "#be123c" },
+                    { code: "M 6342", name: "Spicy Hug", hex: "#9f1239" },
+                    { code: "M 6343", name: "Alluring White", hex: "#fff1f2" },
+                    { code: "M 6344", name: "Peach Fuzz", hex: "#ffedd5" },
+                    { code: "M 6345", name: "Sumptuous Peach", hex: "#fed7aa" },
+                    { code: "M 6346", name: "Flame Orange", hex: "#fdba74" },
+                    { code: "M 6347", name: "Chrysanthemum", hex: "#fb923c" },
+                    { code: "M 6348", name: "Reynard", hex: "#f97316" },
+                    { code: "M 6349", name: "Pennywise", hex: "#ea580c" },
+                    { code: "M 6350", name: "Intricate Ivory", hex: "#fff7ed" },
+                    { code: "M 6351", name: "Sweet Orange", hex: "#c2410c" },
+                    { code: "M 6352", name: "Soft Apricot", hex: "#ffedd5" },
+                    { code: "M 6353", name: "Chivalry Copper", hex: "#fdba74" },
+                    { code: "M 6354", name: "Armagnac", hex: "#ea580c" },
+                    { code: "M 6355", name: "Truepenny", hex: "#c2410c" },
+                    { code: "M 6356", name: "Copper Mountain", hex: "#9a3412" },
+                    { code: "M 6357", name: "Choice Cream", hex: "#fff7ed" },
+                    { code: "M 6358", name: "Creamery", hex: "#ffedd5" },
+                    { code: "M 6359", name: "Sociable", hex: "#fed7aa" },
+                    { code: "M 6360", name: "Folksy Gold", hex: "#fcd34d" },
+                    { code: "M 6361", name: "Autumnal", hex: "#d97706" },
+                    { code: "M 6362", name: "Tigereye", hex: "#b45309" },
+                    { code: "M 6363", name: "Gingery", hex: "#78350f" }
                 ]
             },
             {
@@ -483,7 +528,7 @@
                 fileUrl: "amarillos.pdf",
                 accentHex: "#d97706",
                 roomImage: "Gemini_Generated_Image_u8bd11u8bd11u8bd.jfif",
-                description: "Matices radiantes y luminosos ideales para llenar de luz, calidez y energía positiva tus espacios.",
+                description: "Matices luminosos, cálidos y acogedores que llenan de energía positiva, brillo y sensación de amplitud cualquier ambiente.",
                 featuredColor: { code: "P 152-2", name: "Classic Silk", hex: "#fef3c7", desc: "Tono cremoso luminoso de la carta Amarillos & Ocres, ideal para brindar amplitud y luz natural a estancias familiares." },
                 swatches: [
                     { code: "P 150-1", name: "Sheer Chiffon", hex: "#fef3c7" },
@@ -494,7 +539,16 @@
                     { code: "P 150-6", name: "Spoonbread", hex: "#d97706" },
                     { code: "P 151-1", name: "Silent Bliss", hex: "#fef08a" },
                     { code: "P 151-2", name: "Wheat Dust", hex: "#eab308" },
-                    { code: "P 152-2", name: "Classic Silk", hex: "#fef3c7" }
+                    { code: "P 151-3", name: "Dry Wheat", hex: "#ca8a04" },
+                    { code: "P 151-4", name: "Harvest Flame", hex: "#a16207" },
+                    { code: "P 151-5", name: "Ripe Wheat", hex: "#854d0e" },
+                    { code: "P 151-6", name: "Chaff", hex: "#713f12" },
+                    { code: "P 152-1", name: "Perfume Powder", hex: "#fef9c3" },
+                    { code: "P 152-2", name: "Classic Silk", hex: "#fef3c7" },
+                    { code: "P 152-3", name: "Comfy Tan", hex: "#fde68a" },
+                    { code: "P 150-4-G", name: "Golden Grain", hex: "#eab308" },
+                    { code: "P 150-5-S", name: "Straw Stack", hex: "#ca8a04" },
+                    { code: "P 150-6-W", name: "Warm Toast", hex: "#a16207" }
                 ]
             },
             {
@@ -503,9 +557,10 @@
                 fileUrl: "grises.pdf",
                 accentHex: "#475569",
                 roomImage: "Gemini_Generated_Image_omibf2omibf2omib.jfif",
-                description: "Elegancia neutra y atemporal para acabados modernos, sobrios y versátiles en interiores y fachadas.",
+                description: "Elegancia neutra, moderna y sofisticada para acabados contemporáneos, sobrios y atemporales.",
                 featuredColor: { code: "P 54-4", name: "Stormy Sky", hex: "#64748b", desc: "Elegancia neutra de la carta Grises & Chocolates. Aporta sobriedad contemporánea en oficinas, fachadas y salas de estar." },
                 swatches: [
+                    /* Grises */
                     { code: "P 54-1", name: "Gray Foam", hex: "#f1f5f9" },
                     { code: "P 54-2", name: "Silver Coin", hex: "#cbd5e1" },
                     { code: "P 54-3", name: "Platinum", hex: "#94a3b8" },
@@ -513,7 +568,46 @@
                     { code: "P 54-5", name: "Pewter", hex: "#475569" },
                     { code: "P 54-6", name: "Chinchilla", hex: "#334155" },
                     { code: "P 55-1", name: "Warm Silver", hex: "#e2e8f0" },
-                    { code: "P 56-2", name: "Birch Patina", hex: "#78350f" }
+                    { code: "P 55-2", name: "Windmill White", hex: "#f8fafc" },
+                    { code: "P 55-3", name: "Graystone", hex: "#94a3b8" },
+                    { code: "P 55-4", name: "Rocky Nook", hex: "#64748b" },
+                    { code: "P 55-5", name: "Field Stone", hex: "#475569" },
+                    { code: "P 55-6", name: "Crushed Rock", hex: "#334155" },
+                    { code: "P 56-1", name: "Powdery", hex: "#f1f5f9" },
+                    { code: "P 56-2", name: "Birch Patina", hex: "#78350f" },
+                    { code: "P 56-3", name: "Firewood", hex: "#451a03" },
+                    { code: "P 56-4", name: "Shipsgate", hex: "#475569" },
+                    { code: "P 56-5", name: "Foggy Day", hex: "#334155" },
+                    /* Chocolates */
+                    { code: "P 40-1", name: "Pink Cream", hex: "#fce7f3" },
+                    { code: "P 40-2", name: "Bradford Beige", hex: "#fbcfe8" },
+                    { code: "P 40-3", name: "Winter Twig", hex: "#a21caf" },
+                    { code: "P 40-4", name: "Brier Branch", hex: "#701a75" },
+                    { code: "P 40-5", name: "Worn Harness", hex: "#4c0519" },
+                    { code: "P 40-6", name: "Smoky Taupe", hex: "#9d174d" },
+                    { code: "P 41-1", name: "Pink Romance", hex: "#fce7f3" },
+                    { code: "P 41-2", name: "Plymouth Notch", hex: "#f472b6" },
+                    { code: "P 41-4", name: "Revival Mahogany", hex: "#831843" },
+                    { code: "P 41-5", name: "Sloane House Brown", hex: "#500724" },
+                    { code: "P 41-6", name: "Norton Taupe", hex: "#881337" },
+                    { code: "P 42-1", name: "Beige Satin", hex: "#fbcfe8" },
+                    { code: "P 42-2", name: "Olde Rose", hex: "#f472b6" },
+                    { code: "P 42-3", name: "Wainscot Trim", hex: "#db2777" },
+                    { code: "P 42-4", name: "Roxbury Brown", hex: "#4c0519" },
+                    { code: "P 42-5", name: "Ground Clove", hex: "#831843" },
+                    { code: "P 42-6", name: "Frontier Shadow", hex: "#f472b6" },
+                    { code: "P 43-1", name: "Dusty Rose", hex: "#fbcfe8" },
+                    { code: "P 43-2", name: "Weathered Brown", hex: "#f472b6" },
+                    { code: "P 43-3", name: "Purple Beech", hex: "#a21caf" },
+                    { code: "P 43-4", name: "Duxbury Wood", hex: "#4c0519" },
+                    { code: "P 43-5", name: "Country Junction", hex: "#86198f" },
+                    { code: "P 43-6", name: "Teaberry Grey", hex: "#d8b4fe" },
+                    { code: "P 44-1", name: "Pink Essence", hex: "#fdf2f8" },
+                    { code: "P 44-2", name: "Mountain Haze", hex: "#f0abfc" },
+                    { code: "P 44-3", name: "Lavender Grey", hex: "#e879f9" },
+                    { code: "P 44-4", name: "Purplestone", hex: "#581c87" },
+                    { code: "P 44-5", name: "Heatherstone", hex: "#a21caf" },
+                    { code: "P 44-6", name: "Mt. Smokey", hex: "#cbd5e1" }
                 ]
             },
             {
@@ -522,7 +616,7 @@
                 fileUrl: "lilas.pdf",
                 accentHex: "#9333ea",
                 roomImage: "Gemini_Generated_Image_phg4ogphg4ogphg4.jfif",
-                description: "Sutileza mística y serenidad que despiertan la creatividad, calma y sofistificación en dormitorios y salas.",
+                description: "Sutileza mística, creatividad y tranquilidad en matices púrpuras pensados para ambientes creativos y relajantes.",
                 featuredColor: { code: "M-6822", name: "Wisteria", hex: "#d8b4fe", desc: "Sutileza mística y serenidad de la carta Lilas. Crea ambientes relajantes en dormitorios y salones creativos." },
                 swatches: [
                     { code: "M-6819", name: "Minuet White", hex: "#faf5ff" },
@@ -530,9 +624,22 @@
                     { code: "M-6821", name: "Potentially Purple", hex: "#e9d5ff" },
                     { code: "M-6822", name: "Wisteria", hex: "#d8b4fe" },
                     { code: "M-6823", name: "Brave Purple", hex: "#c084fc" },
-                    { code: "M-6827", name: "Elation", hex: "#a855f7" },
-                    { code: "M-6831", name: "Clematis", hex: "#9333ea" },
-                    { code: "M-6838", name: "Vigorous Violet", hex: "#581c87" }
+                    { code: "M-6824", name: "Forget-me-not", hex: "#a855f7" },
+                    { code: "M-6825", name: "Izmir Purple", hex: "#9333ea" },
+                    { code: "M-6826", name: "Whimsical White", hex: "#faf5ff" },
+                    { code: "M-6827", name: "Elation", hex: "#e9d5ff" },
+                    { code: "M-6828", name: "Rhapsody Lilac", hex: "#d8b4fe" },
+                    { code: "M-6829", name: "Magical", hex: "#c084fc" },
+                    { code: "M-6830", name: "Kismet", hex: "#a855f7" },
+                    { code: "M-6831", name: "Clematis", hex: "#7e22ce" },
+                    { code: "M-6832", name: "Impulsive Purple", hex: "#6b21a8" },
+                    { code: "M-6833", name: "White Lilac", hex: "#faf5ff" },
+                    { code: "M-6834", name: "Spangle", hex: "#f3e8ff" },
+                    { code: "M-6835", name: "Euphoric Lilac", hex: "#f3e8ff" },
+                    { code: "M-6836", name: "Novel Lilac", hex: "#e9d5ff" },
+                    { code: "M-6837", name: "Baroness", hex: "#c084fc" },
+                    { code: "M-6838", name: "Vigorous Violet", hex: "#581c87" },
+                    { code: "M-6839", name: "Kimona Violet", hex: "#3b0764" }
                 ]
             },
             {
@@ -541,7 +648,7 @@
                 fileUrl: "verdes-azulados.pdf",
                 accentHex: "#0d9488",
                 roomImage: "Gemini_Generated_Image_wxikhowxikhowxik.jfif",
-                description: "Frescura marina y tonos vibrantes que aportan relajación, equilibrio y un toque contemporáneo.",
+                description: "Frescura marina, serenidad y equilibrio contemporáneo que renuevan y revitalizan espacios de descanso.",
                 featuredColor: { code: "M-6473", name: "Surf Green", hex: "#2dd4bf", desc: "Frescura marina y tono vibrante de la carta Verdes Azulados. Evoca serenidad y equilibrio en espacios modernos." },
                 swatches: [
                     { code: "M-6469", name: "Dewy", hex: "#f0fdfa" },
@@ -549,9 +656,29 @@
                     { code: "M-6471", name: "Hazel", hex: "#99f6e4" },
                     { code: "M-6472", name: "Composed", hex: "#5eead4" },
                     { code: "M-6473", name: "Surf Green", hex: "#2dd4bf" },
-                    { code: "M-6475", name: "Country Squire", hex: "#14b8a6" },
+                    { code: "M-6474", name: "Raging Sea", hex: "#14b8a6" },
+                    { code: "M-6475", name: "Country Squire", hex: "#0d9488" },
+                    { code: "M-6476", name: "Glimmer", hex: "#99f6e4" },
+                    { code: "M-6477", name: "Tidewater", hex: "#ccfbf1" },
+                    { code: "M-6478", name: "Watery", hex: "#99f6e4" },
+                    { code: "M-6479", name: "Drizzle", hex: "#5eead4" },
                     { code: "M-6480", name: "Lagoon", hex: "#0f766e" },
-                    { code: "M-6496", name: "Oceanside", hex: "#134e4a" }
+                    { code: "M-6481", name: "Green Bay", hex: "#115e59" },
+                    { code: "M-6482", name: "Cape Verde", hex: "#134e4a" },
+                    { code: "M-6483", name: "Buoyant Blue", hex: "#e0f2fe" },
+                    { code: "M-6484", name: "Meander Blue", hex: "#bae6fd" },
+                    { code: "M-6485", name: "Raindrop", hex: "#ccfbf1" },
+                    { code: "M-6486", name: "Reflecting Pool", hex: "#99f6e4" },
+                    { code: "M-6487", name: "Cloudburst", hex: "#14b8a6" },
+                    { code: "M-6488", name: "Grand Canal", hex: "#0f766e" },
+                    { code: "M-6489", name: "Really Teal", hex: "#134e4a" },
+                    { code: "M-6490", name: "Timid Blue", hex: "#f0f9ff" },
+                    { code: "M-6491", name: "Open Air", hex: "#e0f2fe" },
+                    { code: "M-6492", name: "Jetstream", hex: "#bae6fd" },
+                    { code: "M-6493", name: "Ebbtide", hex: "#7dd3fc" },
+                    { code: "M-6494", name: "Lakeshore", hex: "#38bdf8" },
+                    { code: "M-6495", name: "Great Falls", hex: "#0284c7" },
+                    { code: "M-6496", name: "Oceanside", hex: "#0369a1" }
                 ]
             },
             {
@@ -560,17 +687,44 @@
                 fileUrl: "verdes.pdf",
                 accentHex: "#16a34a",
                 roomImage: "Gemini_Generated_Image_wxikhowxikhowxik.jfif",
-                description: "Matices orgánicos que conectan con la vegetación, proyectando armonía natural y revitalizante.",
+                description: "Conexión natural con la vegetación, proyectando frescura orgánica, paz y equilibrio en interiores y exteriores.",
                 featuredColor: { code: "M-6426", name: "Basque Green", hex: "#4ade80", desc: "Tono natural orgánico de la carta Verdes. Conecta con la vegetación e inspira frescura en paredes de acento." },
                 swatches: [
                     { code: "M-6420", name: "Queen Anne's Lace", hex: "#f0fdf4" },
                     { code: "M-6421", name: "Celery", hex: "#dcfce7" },
                     { code: "M-6422", name: "Shagreen", hex: "#bbf7d0" },
-                    { code: "M-6425", name: "Relentless Olive", hex: "#86efac" },
-                    { code: "M-6426", name: "Basque Green", hex: "#4ade80" },
-                    { code: "M-6427", name: "Sprout", hex: "#22c55e" },
-                    { code: "M-6431", name: "LeapFrog", hex: "#16a34a" },
-                    { code: "M-6440", name: "Courtyard", hex: "#15803d" }
+                    { code: "M-6423", name: "Ryegrass", hex: "#86efac" },
+                    { code: "M-6424", name: "Tansy Green", hex: "#a3e635" },
+                    { code: "M-6425", name: "Relentless Olive", hex: "#65a30d" },
+                    { code: "M-6426", name: "Basque Green", hex: "#4d7c0f" },
+                    { code: "M-6427", name: "Sprout", hex: "#4ade80" },
+                    { code: "M-6428", name: "Honeydew", hex: "#f0fdf4" },
+                    { code: "M-6429", name: "Baize Green", hex: "#bbf7d0" },
+                    { code: "M-6430", name: "Great Green", hex: "#86efac" },
+                    { code: "M-6431", name: "LeapFrog", hex: "#22c55e" },
+                    { code: "M-6432", name: "Garden Spot", hex: "#16a34a" },
+                    { code: "M-6433", name: "Inverness", hex: "#14532d" },
+                    { code: "M-6434", name: "Spinach White", hex: "#f0fdf4" },
+                    { code: "M-6435", name: "Grafting Green", hex: "#dcfce7" },
+                    { code: "M-6436", name: "Bonsai Tint", hex: "#dcfce7" },
+                    { code: "M-6437", name: "Haven", hex: "#bbf7d0" },
+                    { code: "M-6438", name: "Dill", hex: "#86efac" },
+                    { code: "M-6439", name: "Greenfield", hex: "#16a34a" },
+                    { code: "M-6440", name: "Courtyard", hex: "#14532d" },
+                    { code: "M-6441", name: "White Mint", hex: "#f0fdf4" },
+                    { code: "M-6442", name: "Supreme Green", hex: "#bbf7d0" },
+                    { code: "M-6443", name: "Relish", hex: "#86efac" },
+                    { code: "M-6444", name: "Lounge Green", hex: "#4ade80" },
+                    { code: "M-6445", name: "Garden Grove", hex: "#16a34a" },
+                    { code: "M-6446", name: "Arugula", hex: "#15803d" },
+                    { code: "M-6447", name: "Evergreens", hex: "#14532d" },
+                    { code: "M-6448", name: "Greening", hex: "#f0fdf4" },
+                    { code: "M-6449", name: "Topiary Tint", hex: "#dcfce7" },
+                    { code: "M-6450", name: "Easy Green", hex: "#86efac" },
+                    { code: "M-6451", name: "Nurture Green", hex: "#16a34a" },
+                    { code: "M-6452", name: "Inland", hex: "#15803d" },
+                    { code: "M-6453", name: "Cilantro", hex: "#166534" },
+                    { code: "M-6454", name: "Shamrock", hex: "#14532d" }
                 ]
             },
             {
@@ -579,16 +733,29 @@
                 fileUrl: "rosas.pdf",
                 accentHex: "#db2777",
                 roomImage: "Gemini_Generated_Image_ebcx3cebcx3cebcx.jfif",
-                description: "Gama delicada y acogedora pensada para transmitir tranquilidad, calidez romántica y confort.",
+                description: "Delicadeza, ternura y armonía romántica para estancias acogedoras, infantiles o de descanso.",
                 featuredColor: { code: "P 93-1", name: "Rose Blush", hex: "#f472b6", desc: "Calidez romántica de la carta Rosas. Un tono delicado y dulce para dormitorios y zonas de descanso del hogar." },
                 swatches: [
                     { code: "P 92-1", name: "Pink Memories", hex: "#fdf2f8" },
                     { code: "P 92-2", name: "Tini Bud", hex: "#fce7f3" },
                     { code: "P 92-3", name: "Rosy Pink", hex: "#fbcfe8" },
+                    { code: "P 92-4", name: "Alpine Pink", hex: "#f472b6" },
+                    { code: "P 92-5", name: "Peaking Pink", hex: "#ec4899" },
                     { code: "P 93-1", name: "Rose Blush", hex: "#f472b6" },
+                    { code: "P 93-2", name: "Pomponette", hex: "#fbcfe8" },
                     { code: "P 93-3", name: "Rose Taffeta", hex: "#ec4899" },
-                    { code: "P 93-5", name: "Pink Crown", hex: "#db2777" },
-                    { code: "P 94-3", name: "Alyssum Wonder", hex: "#be185d" }
+                    { code: "P 93-4", name: "Perky Plume", hex: "#db2777" },
+                    { code: "P 93-5", name: "Pink Crown", hex: "#be185d" },
+                    { code: "P 94-1", name: "Grandma", hex: "#fff1f2" },
+                    { code: "P 94-2", name: "Pink Posy", hex: "#ffe4e6" },
+                    { code: "P 94-3", name: "Alyssum Wonder", hex: "#fecdd3" },
+                    { code: "P 94-4", name: "Zinnia Scarlett", hex: "#e11d48" },
+                    { code: "P 94-5", name: "Zinnia Ruffles", hex: "#be123c" },
+                    { code: "P 95-1", name: "Rose Thought", hex: "#fff1f2" },
+                    { code: "P 95-2", name: "Slim Pink", hex: "#ffe4e6" },
+                    { code: "P 95-3", name: "Novette", hex: "#fda4af" },
+                    { code: "P 95-4", name: "Coral Expression", hex: "#fb7185" },
+                    { code: "P 95-5", name: "Impatiens Pink", hex: "#f43f5e" }
                 ]
             },
             {
@@ -597,16 +764,25 @@
                 fileUrl: "celestes.pdf",
                 accentHex: "#0284c7",
                 roomImage: "Gemini_Generated_Image_w23yb2w23yb2w23y.jfif",
-                description: "Sensación de amplitud y serenidad profunda que favorece el descanso, la concentración y la paz.",
+                description: "Paz, profundidad y luminosidad que estimulan la concentración, la frescura y la tranquilidad.",
                 featuredColor: { code: "P 72-4", name: "Aegean Sea", hex: "#7dd3fc", desc: "Tranquilidad profunda de la carta Celestes. Favorece la concentración y calma en estudios y salas principales." },
                 swatches: [
                     { code: "P 72-1", name: "Venus Light", hex: "#f0f9ff" },
                     { code: "P 72-2", name: "Cool Wave", hex: "#e0f2fe" },
                     { code: "P 72-3", name: "Set Sail", hex: "#bae6fd" },
                     { code: "P 72-4", name: "Aegean Sea", hex: "#7dd3fc" },
+                    { code: "P 72-5", name: "River Walk", hex: "#38bdf8" },
+                    { code: "P 72-6", name: "Cruising", hex: "#0284c7" },
                     { code: "P 73-2", name: "Distant Blue", hex: "#38bdf8" },
-                    { code: "P 73-4", name: "Turkish Tile", hex: "#0284c7" },
+                    { code: "P 73-3", name: "Persian Blue", hex: "#0284c7" },
+                    { code: "P 73-4", name: "Turkish Tile", hex: "#0369a1" },
+                    { code: "P 73-5", name: "Woven Blue", hex: "#075985" },
+                    { code: "P 73-6", name: "Smooth Way", hex: "#0c4a6e" },
+                    { code: "P 74-1", name: "Mermaid Flower", hex: "#e0f2fe" },
                     { code: "P 74-2", name: "Blue Breeze", hex: "#0369a1" },
+                    { code: "P 74-3", name: "Engaging", hex: "#0284c7" },
+                    { code: "P 74-4", name: "Ocean Calm", hex: "#0369a1" },
+                    { code: "P 74-5", name: "Riverside Blue", hex: "#075985" },
                     { code: "P 74-6", name: "Blue Note", hex: "#0c4a6e" }
                 ]
             }
@@ -667,12 +843,6 @@
                             <span class="text-[10px] font-bold text-slate-400 pl-1">+${item.swatches.length} tonos</span>
                         </div>
 
-                        <div class="flex items-center justify-end gap-2 mb-1">
-                            <span class="text-[10px] font-mono text-slate-400 truncate max-w-[140px]" title="${item.fileUrl}">
-                                📄 ${item.fileUrl}
-                            </span>
-                        </div>
-
                         <h4 class="text-base font-extrabold text-pintamax-blue mt-2 mb-2 group-hover:text-pintamax-cyan transition-colors">
                             ${item.title}
                         </h4>
@@ -702,6 +872,7 @@
 
             document.getElementById('subpageBreadcrumbTitle').textContent = item.title;
             document.getElementById('subpageTitle').textContent = item.title;
+            document.getElementById('subpageDesc').textContent = item.description;
             document.getElementById('subpageHeaderBanner').style.backgroundColor = item.accentHex;
 
             // Set Room photo
@@ -774,8 +945,7 @@
                 cat.swatches.forEach(sw => {
                     allSwatches.push({
                         ...sw,
-                        cardTitle: cat.title,
-                        cardPdf: cat.fileUrl
+                        cardTitle: cat.title
                     });
                 });
             });
@@ -842,7 +1012,7 @@
                 muroSec.classList.add('hidden');
                 btnPdf.className = "px-5 py-2.5 rounded-xl bg-pintamax-blue text-white font-bold text-xs shadow transition-all flex items-center gap-2";
                 btnMuro.className = "px-5 py-2.5 rounded-xl text-slate-700 hover:text-pintamax-blue font-bold text-xs transition-all flex items-center gap-2";
-                document.getElementById('currentTabTitle').textContent = "Cartas Digitales de Color";
+                document.getElementById('currentTabTitle').textContent = "Cartas de Color";
                 document.getElementById('currentTabSubtitle').textContent = "Explora interactivamente cada subpágina de color de Pintamax®";
             } else {
                 pdfSec.classList.add('hidden');
